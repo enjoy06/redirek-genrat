@@ -16,7 +16,7 @@ type DecodedToken = {
 export default function Dashboard() {
   const [network, setNetwork] = useState("IMO");
   const [debug, setDebug] = useState("");
-  const [modeLink, setModeLink] = useState("binary");
+  const [modeLink, setModeLink] = useState("hex");
   const [shortURL, setShortURL] = useState("");
   const [result, setResult] = useState("");
   const [resultShort, setResultShort] = useState("");
@@ -170,14 +170,14 @@ export default function Dashboard() {
       let link = "";
       if (modeLink === "hex") {
         const linkStr = await createLink();
-        link = `${debug}https://localhost:3000/${strToHex(linkStr)}`;
+        link = `${debug}https://${shortURL}/${strToHex(linkStr)}`;
       } else if (modeLink === "binary") {
         const linkStr = await createLink();
-        link = `${debug}https://localhost:3000/${bin2uuid(linkStr)}`;
+        link = `${debug}https://${shortURL}/${bin2uuid(linkStr)}`;
       } else if (modeLink === "base64") {
         const linkStr = await createLink();
         const linkBytes = new TextEncoder().encode(linkStr);
-        link = `${debug}https://localhost:3000/${base64UrlEncode(String.fromCharCode(...linkBytes))}`;
+        link = `${debug}https://${shortURL}/${base64UrlEncode(String.fromCharCode(...linkBytes))}`;
       }
       links.push(link);
     }
@@ -339,7 +339,7 @@ export default function Dashboard() {
             className="p-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
             >
             <option value="0">{'{RANDOM GLOBAL DOMAIN}'}</option>
-            <option value="1">setboy</option>
+            <option value="facebooke.cam">facebooke.cam</option>
             </select>
         </div>
 
