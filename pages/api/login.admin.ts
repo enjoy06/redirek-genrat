@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (!user) return res.status(401).json({ message: "Username tidak ditemukan" });
 
-  const validPassword = await bcrypt.compare(password, user.passwordHash);
+  const validPassword = await bcrypt.compare(password, users.passwordHash);
   if (!validPassword) return res.status(401).json({ message: "Password salah" });
 
   // Generate JWT token
