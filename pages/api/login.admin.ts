@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 const JWT_SECRET = process.env.JWT_SECRET!;
 
 const users = [
-  { username: "zdev", passwordHash: "ADMIN", role: "ketua" }, // contoh
+  { username: "zdev", passwordHash: "$2b$10$Pecr0QuoUELxV4cYDjK4wOOd35ay.elMsM/n62y.8n2VQou4074Km", role: "ketua" }, // contoh
   // Tambah user lain sesuai DB-mu
 ];
 
@@ -18,7 +18,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   if (!user) return res.status(401).json({ message: "Username tidak ditemukan" });
 
-  const validPassword = await bcrypt.compare(password, users.passwordHash);
+  const validPassword = await bcrypt.compare(password, user.passwordHash);
   if (!validPassword) return res.status(401).json({ message: "Password salah" });
 
   // Generate JWT token
