@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 const JWT_SECRET = process.env.JWT_SECRET!;
 
 const users = [
-  { username: "zdev", passwordHash: "$2b$10$Pecr0QuoUELxV4cYDjK4wOOd35ay.elMsM/n62y.8n2VQou4074Km", role: "ketua" }, // contoh
+  { username: "zdev", passwordHash: "ADMIN", role: "ketua" }, // contoh
   // Tambah user lain sesuai DB-mu
 ];
 
